@@ -1,4 +1,4 @@
-import { APIKey, HTTP } from '~/utils/api.js';
+import { APIKey, HTTP } from '~/utils/api';
 
 export const fetchBooksList = () => {
     const params = new URLSearchParams();
@@ -8,6 +8,6 @@ export const fetchBooksList = () => {
     };
     return HTTP('?q=""', options);
 };
-export const getBook = (id) => {
+export const getBook = (id: string) => {
     console.log('ldskf', id);
 };
