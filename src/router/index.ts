@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import BooksListView from '../views/BookListView.vue';
+// import BooksListView from '@/views/BookListView.vue';
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'home',
-        component: BooksListView,
+        component: () => import(/* webpackChunkName: "about" */ '@/views/BookListView.vue'),
     },
     {
         path: '/books/:id',

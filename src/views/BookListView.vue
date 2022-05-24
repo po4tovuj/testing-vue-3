@@ -1,15 +1,17 @@
 <template>
     <div class="home">
-        <BooksList />
+        <Suspense>
+            <books-list></books-list>
+        </Suspense>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent } from 'vue';
 import BooksList from '@/components/BooksList.vue'; // @ is an alias to /src
 
-// import { getBooksList } from '@/services/getBooks';
-// import { APIKey, HTTP } from '@/utils/api';
+// import { fetchBooksList } from '@/services/';
+// // import { APIKey, HTTP } from '@/utils/api';
 
 export default defineComponent({
     name: 'BookListView',

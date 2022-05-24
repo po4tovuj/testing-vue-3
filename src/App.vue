@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <nav><router-link exact to="/">Books List</router-link></nav>
-        <router-view> </router-view>
-    </div>
+    <!-- <div> -->
+    <nav><router-link exact to="/">Books List</router-link></nav>
+    <router-view />
+    <!-- </div> -->
 </template>
 
 <style lang="scss">

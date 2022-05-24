@@ -1,37 +1,19 @@
 <template>
-    <div class="hello">MY text-sm-center</div>
+    <div class="hello">BOOKS LIST</div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
-import axios from 'axios';
-// import { fetchBooksList } from '~/services';
+import { defineComponent } from 'vue';
+import useGetBooks from '@/composibles/useGetBooks';
 
 export default defineComponent({
     name: 'BooksList',
+    props: {
+        // books: Array,
+    },
     async setup() {
-        const data = ref(null);
-        const loading = ref(true);
-        const params = new URLSearchParams();
-        params.append('key', 'AIzaSyBHwl7-WdfVIJqflf7z7MqN-AsjXNYIDZw');
-        const options = {
-            params,
-        };
-        const booksResponse = await axios(
-            'https://www.googleapis.com/books/v1/volumes?q=""',
-            options
-        ).then((result) => {
-            console.log('result', result);
-            return result.data.items;
-        });
-        // console.log('🚀 ~ file: BooksList.vue ~ line 26 ~ setup ~ booksResponse', booksResponse);
-
-        data.value = booksResponse;
-        // onMounted(async () => {
-
-        //     await getBooks();
-        // });
-        return { data, loading };
+        const { booksList, loading, error } = await useGetBooks();
+        return { booksList, loading, error };
     },
 });
 </script>
