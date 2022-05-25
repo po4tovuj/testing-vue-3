@@ -4,13 +4,14 @@ import { fetchBooksList, getBook } from '@/services';
 import getErrorMessage from '@/utils/errorCatch';
 import { BookListEntity } from '../types';
 
-export const useBookList = () => {
+export const useBookList = ({ searchQuery = '' }) => {
+    console.log('🚀 ~ file: useGetBooks.ts ~ line 8 ~ useBookList ~ searchQuery', searchQuery);
     const booksList = ref<Array<BookListEntity>>([]);
     const loading = ref<boolean>(true);
     const error = ref<unknown | null>(null);
     const getData = async () => {
         try {
-            const response = await fetchBooksList();
+            const response = await fetchBooksList({ searchQuery });
             if (response.data.items) {
                 booksList.value = response.data.items;
             }
@@ -49,3 +50,11 @@ export const useBookDetails = (id: string) => {
         error,
     };
 };
+// export const useSearch = (searchQuery: string) => {
+//     const bookList =
+//     return {
+//         book,
+//         loading,
+//         error,
+//     };
+// }

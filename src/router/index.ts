@@ -1,19 +1,17 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-// import BooksListView from '@/views/BookListView.vue';
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        name: 'home',
-        component: () => import(/* webpackChunkName: "about" */ '@/views/BookListView.vue'),
+        name: 'BookListView',
+        component: () => import(/* webpackChunkName: "BookListView" */ '@/views/BookListView.vue'),
     },
     {
         path: '/:id',
-        name: 'about',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '~/views/BookDescriptionView.vue'),
+        name: 'BookDescriptionView',
+        props: true,
+        component: () =>
+            import(/* webpackChunkName: "BookDescriptionView" */ '~/views/BookDescriptionView.vue'),
     },
 ];
 

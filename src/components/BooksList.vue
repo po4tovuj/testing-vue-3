@@ -4,12 +4,17 @@
 
         <section>
             <ul class="books-list">
-                <li class="book" v-for="book in bookList" :key="book.id">
-                    <img :src="book.volumeInfo.imageLinks.thumbnail" height="190" alt="poster" />
-                    <h2 class="book__title">
+                <li class="book-item" v-for="book in bookList" :key="book.id">
+                    <img
+                        v-if="book.volumeInfo.imageLinks.thumbnail"
+                        :src="book.volumeInfo.imageLinks.thumbnail"
+                        height="190"
+                        alt="poster"
+                    />
+                    <h2 class="book-item__title">
                         {{ book.volumeInfo.title }}
                     </h2>
-                    <p class="book__description">
+                    <p class="book-item__description">
                         {{ book.volumeInfo.description }}
                     </p>
                     <router-link :to="`/${book.id}`"> See Details</router-link>
@@ -21,7 +26,6 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-// import { useGetBooks } from '@/composables/useGetBooks';
 import { BookListEntity } from '../types';
 
 export default defineComponent({
@@ -45,7 +49,7 @@ export default defineComponent({
     justify-content: center;
     // justify-content: space-between;
     padding: 40px 20px 0px 40px;
-    .book {
+    .book-item {
         display: inline-block;
 
         max-width: 23%;

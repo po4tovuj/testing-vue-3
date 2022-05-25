@@ -23,19 +23,18 @@ export interface VolumeInfo {
     averageRating?: number | null;
     ratingsCount?: number | null;
 }
-// export interface IndustryIdentifiersEntity {
-//     type: string;
-//     identifier: string;
-// }
-// export interface ReadingModes {
-//     text: boolean;
-//     image: boolean;
-// }
+export interface ListPriceOrRetailPrice {
+    amount: number;
+    currencyCode: string;
+}
+export interface SaleInfo {
+    listPrice: ListPriceOrRetailPrice;
+    buyLink: string;
+}
 
 export interface BookListEntity {
     id: string;
-    // etag: string;
-    selfLink: string;
+    saleInfo: SaleInfo;
     volumeInfo: VolumeInfo;
 }
 export interface BookList {

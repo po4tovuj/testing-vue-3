@@ -4,9 +4,17 @@
         <router-link class="nav-list__btn" exact to="/">Books List</router-link>
     </nav>
     <router-view />
-    <!-- </div> -->
 </template>
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 
+const isListRoute = computed(() => {
+    const route = useRoute();
+    return route.name === 'BookListView';
+});
+console.log('🚀 ~ file: App.vue ~ line 15 ~ isListRoute ~ route', isListRoute.value);
+</script>
 <style lang="scss">
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -22,6 +30,8 @@ body {
     padding: 30px;
     text-align: left;
     background-color: rgba($color: #000000, $alpha: 0.1);
+    display: flex;
+    justify-content: space-between;
     &__btn {
         display: inline-block;
         font-weight: bold;
