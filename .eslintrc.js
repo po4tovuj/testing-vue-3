@@ -26,7 +26,6 @@ module.exports = {
                 jsx: 'never',
             },
         ],
-        // 'import/extensions': { js: 'always', vue: 'always' },
     },
     overrides: [
         {

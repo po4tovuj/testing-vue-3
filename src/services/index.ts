@@ -1,4 +1,5 @@
 import { APIKey, HTTP } from '~/utils/api';
+import { BookList, BookListEntity } from '../types';
 
 export const fetchBooksList = () => {
     const params = new URLSearchParams();
@@ -6,8 +7,14 @@ export const fetchBooksList = () => {
     const options = {
         params,
     };
-    return HTTP('?q=""', options);
+    return HTTP.get<BookList>('?q=""', options);
 };
 export const getBook = (id: string) => {
-    console.log('ldskf', id);
+    const params = new URLSearchParams();
+    params.append('key', APIKey);
+
+    const options = {
+        params,
+    };
+    return HTTP.get<BookListEntity>(`${id}`, options);
 };

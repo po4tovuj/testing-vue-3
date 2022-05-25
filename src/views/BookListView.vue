@@ -1,8 +1,8 @@
 <template>
     <div class="home">
-        <Suspense>
-            <books-list></books-list>
-        </Suspense>
+        <div v-if="loading">data is loading</div>
+
+        <books-list v-if="!loading" :book-list="booksList"></books-list>
     </div>
 </template>
 
@@ -10,13 +10,16 @@
 import { defineComponent } from 'vue';
 import BooksList from '@/components/BooksList.vue'; // @ is an alias to /src
 
-// import { fetchBooksList } from '@/services/';
-// // import { APIKey, HTTP } from '@/utils/api';
+import { useBookList } from '@/composables/useGetBooks';
 
 export default defineComponent({
     name: 'BookListView',
     components: {
         BooksList,
+    },
+    setup() {
+        const { booksList, loading, error } = useBookList();
+        return { booksList, loading, error };
     },
 });
 </script>

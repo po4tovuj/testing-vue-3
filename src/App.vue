@@ -1,6 +1,8 @@
 <template>
     <!-- <div> -->
-    <nav><router-link exact to="/">Books List</router-link></nav>
+    <nav class="nav-list">
+        <router-link class="nav-list__btn" exact to="/">Books List</router-link>
+    </nav>
     <router-view />
     <!-- </div> -->
 </template>
@@ -13,16 +15,27 @@
     text-align: center;
     color: #2c3e50;
 }
-
-nav {
+body {
+    margin: 0;
+}
+.nav-list {
     padding: 30px;
-
-    a {
+    text-align: left;
+    background-color: rgba($color: #000000, $alpha: 0.1);
+    &__btn {
+        display: inline-block;
         font-weight: bold;
-        color: #2c3e50;
-
+        background-color: #fff;
+        color: #000;
+        text-decoration: none;
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 8px 20px;
+        &:hover,
         &.router-link-exact-active {
-            color: #42b983;
+            background-color: blue;
+            color: white;
+            border-color: #fff;
         }
     }
 }
