@@ -106,9 +106,10 @@ export default defineComponent({
     .text-bold {
         font-weight: bold;
     }
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+    @media only screen and (min-device-width: 768px) {
         .book {
             grid-template-columns: repeat(2, 1fr);
+            text-align: left;
         }
     }
     // @media only screen and (min-widht: 992px) and (max-width: 1199px) {

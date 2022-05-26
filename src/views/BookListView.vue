@@ -1,8 +1,8 @@
 <template>
-    <div class="">
+    <div class="books-list-view">
         <div v-if="!loading">
             <filter-books @handle-search="handleSearch"></filter-books>
-            <books-list v-if="!loading" :book-list="booksList"></books-list>
+            <books-list :book-list="booksList"></books-list>
         </div>
 
         <loading-spiner v-else />
@@ -41,3 +41,12 @@ export default defineComponent({
     },
 });
 </script>
+<style lang="scss">
+.books-list-view {
+    height: calc(100% - 100px);
+    position: relative;
+    & > div {
+        height: 100%;
+    }
+}
+</style>

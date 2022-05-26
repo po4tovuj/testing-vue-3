@@ -15,9 +15,7 @@ export const useBookList = (props: { searchQuery: Ref<string>; authorSearch: Ref
                 searchQuery: props.searchQuery?.value,
                 authorSearch: props.authorSearch?.value,
             });
-            if (response.data.items) {
-                booksList.value = response.data.items;
-            }
+            booksList.value = response.data.items || [];
         } catch (err) {
             error.value = getErrorMessage(err);
         } finally {
@@ -35,7 +33,6 @@ export const useBookList = (props: { searchQuery: Ref<string>; authorSearch: Ref
 };
 
 export const useBookDetails = (id: string) => {
-    // const book: Ref<Book> = ref([]);
     const book = ref<BookListEntity>();
     const loading = ref<boolean>(true);
     const error = ref<unknown | null>(null);
@@ -43,9 +40,7 @@ export const useBookDetails = (id: string) => {
     const getData = async () => {
         try {
             const response = await getBook(id);
-            if (response.data.id) {
-                book.value = response.data;
-            }
+            book.value = response.data || null;
         } catch (err) {
             error.value = getErrorMessage(err);
         } finally {

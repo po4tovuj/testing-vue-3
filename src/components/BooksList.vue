@@ -1,30 +1,33 @@
 <template>
-    <div>
+    <div class="books-list-wrapper">
         <h1>Google books API</h1>
 
-        <section>
-            <div class="books-list-wrapper">
-                <ul class="books-list">
-                    <li class="book-item" v-for="book in bookList" :key="book.id">
-                        <img
-                            v-if="book.volumeInfo.imageLinks.thumbnail"
-                            :src="book.volumeInfo.imageLinks.thumbnail"
-                            height="190"
-                            alt="poster"
-                        />
-                        <h2 class="book-item__title">
-                            {{ book.volumeInfo.title }}
-                        </h2>
-                        <p class="book-item__description">
-                            {{ book.volumeInfo.description }}
-                        </p>
-                        <router-link class="book-item__link" :to="`/${book.id}`">
-                            See Details</router-link
-                        >
-                    </li>
-                </ul>
-            </div>
+        <section v-if="bookList.length">
+            <!-- <div> -->
+            <ul class="books-list">
+                <li class="book-item" v-for="book in bookList" :key="book.id">
+                    <img
+                        v-if="book.volumeInfo.imageLinks.thumbnail"
+                        :src="book.volumeInfo.imageLinks.thumbnail"
+                        height="190"
+                        alt="poster"
+                    />
+                    <h2 class="book-item__title">
+                        {{ book.volumeInfo.title }}
+                    </h2>
+                    <p class="book-item__description">
+                        {{ book.volumeInfo.description }}
+                    </p>
+                    <router-link class="book-item__link" :to="`/${book.id}`">
+                        See Details</router-link
+                    >
+                </li>
+            </ul>
+            <!-- </div> -->
         </section>
+        <div v-else class="not-found">
+            <h2>No Books Found!</h2>
+        </div>
     </div>
 </template>
 
@@ -45,14 +48,24 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+.not-found {
+    color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .books-list-wrapper {
+    box-sizing: border-box;
     padding: 40px;
+    height: calc(100% - 100px);
+    position: relative;
 }
 .books-list {
     list-style-type: none;
     box-sizing: content-box;
 
-    padding: 0;
+    padding: 0 0 40px;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;

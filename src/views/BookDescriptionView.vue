@@ -1,7 +1,12 @@
 <template>
-    <div class="about">
-        <loading-spiner v-if="loading"></loading-spiner>
-        <book-card v-else :book="book"></book-card>
+    <div v-if="book && !loading" class="book-card-wapper">
+        <book-card :book="book"></book-card>
+    </div>
+
+    <loading-spiner v-if="loading"></loading-spiner>
+
+    <div v-if="!loading && !book" class="not-found">
+        <h2>No Books Found!</h2>
     </div>
 </template>
 
@@ -27,3 +32,12 @@ export default defineComponent({
     },
 });
 </script>
+<style>
+.not-found {
+    color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+</style>
