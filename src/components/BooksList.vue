@@ -3,14 +3,19 @@
         <h1>Google books API</h1>
 
         <section>
-            <!-- <div> -->
             <ul class="books-list">
                 <li class="book-item" v-for="book in bookList" :key="book.id">
                     <img
-                        v-if="book.volumeInfo.imageLinks.thumbnail"
+                        class="book__poster"
+                        v-if="book.volumeInfo?.imageLinks?.thumbnail"
                         :src="book.volumeInfo.imageLinks.thumbnail"
-                        height="190"
-                        alt="poster"
+                        :alt="book.volumeInfo.title"
+                    />
+                    <img
+                        class="book__poster"
+                        v-else
+                        src="../assets/book.png"
+                        :alt="book.volumeInfo.title"
                     />
                     <h2 class="book-item__title">
                         {{ book.volumeInfo.title }}
@@ -23,7 +28,6 @@
                     >
                 </li>
             </ul>
-            <!-- </div> -->
         </section>
     </div>
 </template>
@@ -95,7 +99,7 @@ export default defineComponent({
         grid-template-columns: repeat(2, 1fr);
     }
 }
-@media only screen and (min-widht: 992px) and (max-width: 1199px) {
+@media only screen and (min-device-width: 992px) and (max-device-width: 1200px) {
     .books-list {
         grid-template-columns: repeat(3, 1fr);
     }

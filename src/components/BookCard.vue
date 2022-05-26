@@ -4,7 +4,14 @@
         <main class="book">
             <img
                 class="book__poster"
+                v-if="book.volumeInfo?.imageLinks?.thumbnail"
                 :src="book.volumeInfo.imageLinks.thumbnail"
+                :alt="book.volumeInfo.title"
+            />
+            <img
+                class="book__poster"
+                v-else
+                src="../assets/book.png"
                 :alt="book.volumeInfo.title"
             />
             <div class="book-details">
