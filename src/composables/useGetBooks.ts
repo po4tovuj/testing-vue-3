@@ -58,11 +58,3 @@ export const useBookDetails = (id: string) => {
         error,
     };
 };
-// export const useSearch = (searchQuery: string) => {
-//     const bookList =
-//     return {
-//         book,
-//         loading,
-//         error,
-//     };
-// }

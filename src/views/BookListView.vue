@@ -11,10 +11,10 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import BooksList from '@/components/BooksList.vue'; // @ is an alias to /src
-import { useBookList } from '@/composables/useGetBooks';
-import FilterBooks from '../components/FilterBooks.vue';
-import LoadingSpiner from '../components/LoadingSpiner.vue';
+import BooksList from '~/components/BooksList.vue';
+import { useBookList } from '~/composables/useGetBooks';
+import FilterBooks from '~/components/FilterBooks.vue';
+import LoadingSpiner from '~/components/LoadingSpiner.vue';
 
 export default defineComponent({
     name: 'BookListView',
@@ -33,11 +33,8 @@ export default defineComponent({
         });
 
         function handleSearch(props: { searchQuery?: string; authorSearch?: string }) {
-            // if (props.searchQuery) {
             search.value = props.searchQuery || '';
             searchInAuthor.value = props.authorSearch || '';
-
-            // }
         }
 
         return { booksList, loading, error, handleSearch };

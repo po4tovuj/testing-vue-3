@@ -4,7 +4,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'BookListView',
-        component: () => import(/* webpackChunkName: "BookListView" */ '@/views/BookListView.vue'),
+        component: () => import(/* webpackChunkName: "BookListView" */ '~/views/BookListView.vue'),
     },
     {
         path: '/:id',

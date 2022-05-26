@@ -1,5 +1,5 @@
 import { APIKey, HTTP } from '~/utils/api';
-import { BookList, BookListEntity } from '../types';
+import { BookList, BookListEntity } from '~/types';
 
 export const fetchBooksList = ({ searchQuery = '', authorSearch = '' }) => {
     const params = new URLSearchParams();

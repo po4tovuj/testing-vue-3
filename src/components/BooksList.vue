@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { BookListEntity } from '../types';
+import { BookListEntity } from '~/types';
 
 export default defineComponent({
     props: {
@@ -60,8 +60,6 @@ export default defineComponent({
     grid-row-gap: 10px;
 
     .book-item {
-        // flex: 1 1 calc(25% - 20px);
-        // margin: 10px;
         min-width: 100%;
         border: 1px solid lightblue;
         border-radius: 5px;
@@ -104,12 +102,4 @@ export default defineComponent({
         grid-template-columns: repeat(4, 1fr);
     }
 }
-
-// li {
-//     display: inline-block;
-//     margin: 0 10px;
-// }
-// a {
-//     color: #42b983;
-// }
 </style>

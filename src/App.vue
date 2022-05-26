@@ -1,5 +1,4 @@
 <template>
-    <!-- <div> -->
     <nav class="nav-list">
         <router-link class="nav-list__btn" exact to="/">Books List</router-link>
     </nav>
