@@ -18,6 +18,7 @@ export default defineComponent({
     setup(props) {
         const { id } = toRefs(props);
         const { book, loading, error } = useBookDetails(`${id.value}`);
+
         return {
             book,
             loading,

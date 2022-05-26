@@ -38,7 +38,7 @@
 </template>
 <script lang="ts">
 import { computed, defineComponent, PropType, toRefs } from 'vue';
-import { BookListEntity } from '../types';
+import { BookListEntity } from '~/types';
 
 export default defineComponent({
     name: 'BookCard',
@@ -50,7 +50,10 @@ export default defineComponent({
     },
     setup(props) {
         const { book } = toRefs(props);
+
+        // from api it comes with some tags, so lets remove them
         const regex = /(<([^>]+)>)/gi;
+
         const parsedDescription = computed(() =>
             book.value.volumeInfo.description?.replace(regex, '')
         );
@@ -59,6 +62,7 @@ export default defineComponent({
     },
 });
 </script>
+
 <style lang="scss" scoped>
 .book-wrapper {
     padding: 0 40px;

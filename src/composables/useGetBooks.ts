@@ -39,6 +39,7 @@ export const useBookDetails = (id: string) => {
     const book = ref<BookListEntity>();
     const loading = ref<boolean>(true);
     const error = ref<unknown | null>(null);
+
     const getData = async () => {
         try {
             const response = await getBook(id);
@@ -52,6 +53,7 @@ export const useBookDetails = (id: string) => {
         }
     };
     getData();
+
     return {
         book,
         loading,

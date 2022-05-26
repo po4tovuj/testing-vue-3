@@ -43,6 +43,7 @@ export default defineComponent({
     setup(_, { emit }) {
         const searchQuery = ref<string>('');
         const authorSearch = ref<string>('');
+
         const searchBook = () => {
             emit('handleSearch', {
                 searchQuery: searchQuery.value,
@@ -54,6 +55,7 @@ export default defineComponent({
     },
 });
 </script>
+
 <style scoped lang="scss">
 .filters-wrapper {
     .filters-list {

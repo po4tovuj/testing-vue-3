@@ -16,13 +16,16 @@ export const fetchBooksList = ({ searchQuery = '', authorSearch = '' }) => {
     } else if (authorSearch) {
         params.set('q', `inauthor: ${authorSearch}`);
     }
+
     const options = {
         params,
     };
+
     return HTTP.get<BookList>('/', options);
 };
 export const getBook = (id: string) => {
     const params = new URLSearchParams();
+
     params.append('key', APIKey);
 
     const options = {
