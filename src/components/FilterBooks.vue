@@ -2,7 +2,24 @@
     <div class="filters-wrapper">
         <ul class="filters-list">
             <li class="filter-search">
+                <label class="filter-search__label" for="authorSearch">
+                    Search by author
+                    <div class="filter-search__icon">
+                        <input
+                            id="authorSearch"
+                            type="search"
+                            placeholder="Search Author"
+                            class="filter-search__input"
+                            @keypress.enter="searchBook"
+                            v-model="authorSearch"
+                        />
+                    </div>
+                </label>
+            </li>
+            <li class="filter-search">
                 <label class="filter-search__label" for="search">
+                    Global Search
+
                     <div class="filter-search__icon">
                         <input
                             id="search"
@@ -25,10 +42,15 @@ export default defineComponent({
     emits: ['handleSearch'],
     setup(_, { emit }) {
         const searchQuery = ref<string>('');
+        const authorSearch = ref<string>('');
         const searchBook = () => {
-            emit('handleSearch', searchQuery.value);
+            emit('handleSearch', {
+                searchQuery: searchQuery.value,
+                authorSearch: authorSearch.value,
+            });
         };
-        return { searchQuery, searchBook };
+
+        return { searchQuery, authorSearch, searchBook };
     },
 });
 </script>
@@ -45,10 +67,12 @@ export default defineComponent({
 
         .filter-search {
             &__label {
-                color: black;
+                color: #fff;
                 font-size: 16px;
                 display: block;
                 margin-bottom: 0.25rem;
+                text-align: left;
+                margin-left: 20px;
             }
             &__input {
                 display: block;

@@ -1,17 +1,20 @@
-import { ref } from 'vue';
+import { ref, Ref, watch } from 'vue';
 
 import { fetchBooksList, getBook } from '@/services';
 import getErrorMessage from '@/utils/errorCatch';
 import { BookListEntity } from '../types';
 
-export const useBookList = ({ searchQuery = '' }) => {
-    console.log('🚀 ~ file: useGetBooks.ts ~ line 8 ~ useBookList ~ searchQuery', searchQuery);
+export const useBookList = (props: { searchQuery: Ref<string>; authorSearch: Ref<string> }) => {
     const booksList = ref<Array<BookListEntity>>([]);
     const loading = ref<boolean>(true);
     const error = ref<unknown | null>(null);
+
     const getData = async () => {
         try {
-            const response = await fetchBooksList({ searchQuery });
+            const response = await fetchBooksList({
+                searchQuery: props.searchQuery?.value,
+                authorSearch: props.authorSearch?.value,
+            });
             if (response.data.items) {
                 booksList.value = response.data.items;
             }
@@ -21,6 +24,11 @@ export const useBookList = ({ searchQuery = '' }) => {
             loading.value = false;
         }
     };
+    // watch for changes in globalSearch and search by author values and fire api call
+    watch([props.searchQuery, props.authorSearch], () => {
+        getData();
+    });
+
     getData();
 
     return { booksList, loading, error };

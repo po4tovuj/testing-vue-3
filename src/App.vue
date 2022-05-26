@@ -5,16 +5,7 @@
     </nav>
     <router-view />
 </template>
-<script setup lang="ts">
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
 
-const isListRoute = computed(() => {
-    const route = useRoute();
-    return route.name === 'BookListView';
-});
-console.log('🚀 ~ file: App.vue ~ line 15 ~ isListRoute ~ route', isListRoute.value);
-</script>
 <style lang="scss">
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
