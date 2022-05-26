@@ -5,8 +5,8 @@
 
     <loading-spiner v-if="loading"></loading-spiner>
 
-    <div v-if="(!loading && !book) || error" class="not-found">
-        <h2>No Books Found!</h2>
+    <div v-if="(!loading && !book) || error" class="not-found-wrapper">
+        <h2 class="not-found">No Books Found!</h2>
     </div>
 </template>
 
@@ -32,12 +32,14 @@ export default defineComponent({
     },
 });
 </script>
-<style>
-.not-found {
+<style lang="scss">
+.not-found-wrapper {
     color: red;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    .not-found {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 </style>

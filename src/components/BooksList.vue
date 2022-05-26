@@ -45,13 +45,6 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-.not-found {
-    color: red;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 .books-list-wrapper {
     box-sizing: border-box;
     padding: 40px;

@@ -1,13 +1,13 @@
 <template>
     <div class="books-list-view">
-        <div v-if="!loading && booksList.length">
-            <filter-books @handle-search="handleSearch"></filter-books>
-            <books-list :book-list="booksList"></books-list>
-        </div>
+        <!-- <div v-if="!loading"> -->
+        <filter-books @handle-search="handleSearch"></filter-books>
+        <books-list v-if="booksList.length" :book-list="booksList"></books-list>
+        <!-- </div> -->
 
         <loading-spiner v-if="loading" />
-        <div v-if="(!loading && !booksList.length) || error" class="not-found">
-            <h2>No Books Found!</h2>
+        <div v-if="(!loading && !booksList.length) || error" class="not-found-wrapper">
+            <h2 class="not-found">No Books Found!</h2>
         </div>
     </div>
 </template>
@@ -45,11 +45,21 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
+.not-found-wrapper {
+    color: red;
+    // position: relative;
+    .not-found {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
 .books-list-view {
     height: calc(100% - 100px);
-    position: relative;
-    & > div {
-        height: 100%;
-    }
+    // position: relative;
+    // & > div {
+    //     height: 100%;
+    // }
 }
 </style>
