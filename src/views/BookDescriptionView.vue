@@ -1,11 +1,11 @@
 <template>
-    <div v-if="book && !loading" class="book-card-wapper">
+    <div v-if="book && !loading && !error" class="book-card-wapper">
         <book-card :book="book"></book-card>
     </div>
 
     <loading-spiner v-if="loading"></loading-spiner>
 
-    <div v-if="!loading && !book" class="not-found">
+    <div v-if="(!loading && !book) || error" class="not-found">
         <h2>No Books Found!</h2>
     </div>
 </template>

@@ -1,11 +1,14 @@
 <template>
     <div class="books-list-view">
-        <div v-if="!loading">
+        <div v-if="!loading && booksList.length">
             <filter-books @handle-search="handleSearch"></filter-books>
             <books-list :book-list="booksList"></books-list>
         </div>
 
-        <loading-spiner v-else />
+        <loading-spiner v-if="loading" />
+        <div v-if="(!loading && !booksList.length) || error" class="not-found">
+            <h2>No Books Found!</h2>
+        </div>
     </div>
 </template>
 

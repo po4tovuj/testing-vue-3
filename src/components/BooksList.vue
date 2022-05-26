@@ -2,7 +2,7 @@
     <div class="books-list-wrapper">
         <h1>Google books API</h1>
 
-        <section v-if="bookList.length">
+        <section>
             <!-- <div> -->
             <ul class="books-list">
                 <li class="book-item" v-for="book in bookList" :key="book.id">
@@ -25,9 +25,6 @@
             </ul>
             <!-- </div> -->
         </section>
-        <div v-else class="not-found">
-            <h2>No Books Found!</h2>
-        </div>
     </div>
 </template>
 
