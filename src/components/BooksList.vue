@@ -50,19 +50,22 @@ export default defineComponent({
 }
 .books-list {
     list-style-type: none;
+    box-sizing: content-box;
+
     padding: 0;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    margin: -10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
 
     .book-item {
-        flex: 1 1 calc(25% - 20px);
-        margin: 10px;
-        // min-width: calc(25% - 20px);
-        // width: 23%;
-        // padding-bottom: 20px;
-        // padding-right: 20px;
+        // flex: 1 1 calc(25% - 20px);
+        // margin: 10px;
+        min-width: 100%;
+        border: 1px solid lightblue;
+        border-radius: 5px;
+        padding: 12px 16px;
         &__title {
             overflow: hidden;
             white-space: nowrap;
@@ -70,6 +73,7 @@ export default defineComponent({
         }
 
         &__description {
+            text-align: justify;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -83,6 +87,21 @@ export default defineComponent({
                 color: rgb(0, 0, 238);
             }
         }
+    }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+    .books-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media only screen and (min-widht: 992px) and (max-width: 1199px) {
+    .books-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (min-device-width: 1200px) and (-webkit-min-device-pixel-ratio: 1) {
+    .books-list {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 

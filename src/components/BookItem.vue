@@ -64,8 +64,11 @@ export default defineComponent({
     padding: 0 40px;
     text-align: center;
     .book {
-        display: flex;
-
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+        padding-bottom: 20px;
+        justify-items: center;
         .book__poster {
             margin-right: 20px;
             width: 250px;
@@ -74,6 +77,9 @@ export default defineComponent({
         }
         &-details {
             width: -webkit-fill-available;
+            &__description {
+                text-align: justify;
+            }
         }
         &__price-wrapper {
             width: 300px;
@@ -96,5 +102,20 @@ export default defineComponent({
     .text-bold {
         font-weight: bold;
     }
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+        .book {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    // @media only screen and (min-widht: 992px) and (max-width: 1199px) {
+    //     .book {
+    //         grid-template-columns: repeat(3, 1fr);
+    //     }
+    // }
+    // @media screen and (min-device-width: 1200px) and (-webkit-min-device-pixel-ratio: 1) {
+    //     .book {
+    //         grid-template-columns: repeat(4, 1fr);
+    //     }
+    // }
 }
 </style>
