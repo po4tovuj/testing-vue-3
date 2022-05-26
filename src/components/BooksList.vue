@@ -56,14 +56,14 @@ export default defineComponent({
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-column-gap: 40px;
+    grid-row-gap: 20px;
 
     .book-item {
         min-width: 100%;
         border: 1px solid lightblue;
         border-radius: 5px;
-        padding: 12px 16px;
+        padding: 12px;
         &__title {
             overflow: hidden;
             white-space: nowrap;

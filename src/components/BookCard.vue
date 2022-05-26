@@ -41,7 +41,7 @@ import { computed, defineComponent, PropType, toRefs } from 'vue';
 import { BookListEntity } from '../types';
 
 export default defineComponent({
-    name: 'BookItem',
+    name: 'BookCard',
     props: {
         book: {
             type: Object as PropType<BookListEntity>,
