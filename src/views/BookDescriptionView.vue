@@ -4,7 +4,7 @@
     </div>
 
     <loading-spiner v-if="loading"></loading-spiner>
-
+    
     <div v-if="(!loading && !book) || error" class="not-found-wrapper">
         <h2 class="not-found">No Books Found!</h2>
     </div>
